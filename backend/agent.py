@@ -92,10 +92,10 @@ Be concise, factual, and cite sources as [1], [2], etc."""
         Returns:
             Dict with search_results, sources (with summaries), and final_report
         """
-        print(f"🔍 Starting research: {query}")
+        print(f"Starting research: {query}")
 
         # Step 1: Search with SerpAPI
-        print("📡 Searching with SerpAPI...")
+        print("Searching with SerpAPI...")
         search_results = self.serp_client.search(query, max_results=self.max_sources)
 
         if not search_results:
@@ -107,7 +107,7 @@ Be concise, factual, and cite sources as [1], [2], etc."""
             }
 
         # Step 2: Parse and summarize each source
-        print(f"📚 Processing {len(search_results)} sources...")
+        print(f"Processing {len(search_results)} sources...")
         sources = []
 
         for idx, result in enumerate(search_results, 1):
@@ -118,7 +118,7 @@ Be concise, factual, and cite sources as [1], [2], etc."""
 
             # Check cache first
             if self.cache.exists(url):
-                print(f"    ✓ Using cached summary")
+                print(f"    [CACHED] Using cached summary")
                 cached = self.cache.get(url)
                 sources.append({
                     "title": title,
@@ -131,7 +131,7 @@ Be concise, factual, and cite sources as [1], [2], etc."""
             # Parse with JinaAI
             content = self.jina_reader.read_url(url)
             if not content:
-                print(f"    ✗ Failed to parse")
+                print(f"    [ERROR] Failed to parse")
                 continue
 
             # Summarize with Claude
@@ -147,13 +147,13 @@ Be concise, factual, and cite sources as [1], [2], etc."""
                 "summary": summary
             })
 
-            print(f"    ✓ Summarized to {len(summary)} bullets")
+            print(f"    [OK] Summarized to {len(summary)} bullets")
 
         # Step 3: Generate final report
-        print("📝 Generating final report...")
+        print("Generating final report...")
         report = self._generate_report(query, sources)
 
-        print("✅ Research complete!")
+        print("Research complete!")
 
         return {
             "query": query,
