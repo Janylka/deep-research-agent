@@ -1,10 +1,10 @@
 # 🔍 Deep Research Agent
 
-AI-powered research assistant that automatically searches the web, analyzes sources, and generates comprehensive reports using SerpAPI, JinaAI Reader, and Claude AI.
+AI-powered research assistant that automatically searches the web, analyzes sources, and generates comprehensive reports using Tavily AI Search, JinaAI Reader, and Claude AI.
 
 ## ✨ Features
 
-- **Smart Search**: Finds top 5 most relevant sources via SerpAPI
+- **Smart Search**: Finds top 5 most relevant sources via Tavily AI
 - **Content Parsing**: Cleans and extracts content with JinaAI Reader
 - **AI Summarization**: Compresses each source to 5-7 key bullet points
 - **Report Generation**: Synthesizes findings into structured reports
@@ -19,7 +19,7 @@ Frontend (React + Tailwind)
 Backend API (FastAPI)
     ↓
 Deep Research Agent
-    ├── SerpAPI (search)
+    ├── Tavily AI (search)
     ├── JinaAI Reader (parse)
     ├── Claude AI (analyze)
     └── Context7 Cache (optimize)
