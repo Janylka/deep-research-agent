@@ -1,8 +1,6 @@
 import os
 from typing import List, Dict
-# Toggle between real and mock SerpAPI:
-# from serp_client import SerpAPIClient  # Real SerpAPI
-from serp_mock import MockSerpAPIClient as SerpAPIClient  # Mock for testing
+from serp_client import SerpAPIClient
 from jina_client import JinaAIReader
 from context7 import Context7Cache
 import anthropic
